@@ -1,5 +1,5 @@
 name: camera_gallery_photopicker
-description: "A new Flutter project."
+description: "A simple Flutter package that allows easy image picking from the gallery or camera. It presents a bottom sheet UI for selecting the image source and returns the selected image to your app via a callback function. Compatible with Flutter 2.0+ and supports null safety."
 version: 0.0.1
 homepage: https://github.com/mahafujerrahman/image_picker_helper
 
