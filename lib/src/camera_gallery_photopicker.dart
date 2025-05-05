@@ -6,7 +6,10 @@ import 'package:image_picker/image_picker.dart';
 
 class ImagePickerHelper {
   // Show image picker options (Gallery or Camera)
-  static void showImagePickerOption(BuildContext context, Function(File) onImagePicked) {
+  static void showImagePickerOption(
+    BuildContext context,
+    Function(File) onImagePicked,
+  ) {
     showModalBottomSheet(
       backgroundColor: Colors.white,
       context: context,
@@ -27,12 +30,8 @@ class ImagePickerHelper {
                     child: SizedBox(
                       child: Column(
                         children: [
-                          Icon(
-                            Icons.image,
-                            size: 50,
-                            color: Colors.black,
-                          ),
-                          Text('Gallery')
+                          Icon(Icons.image, size: 50, color: Colors.black),
+                          Text('Gallery'),
                         ],
                       ),
                     ),
@@ -47,7 +46,7 @@ class ImagePickerHelper {
                       child: Column(
                         children: [
                           Icon(Icons.camera_alt, size: 50, color: Colors.black),
-                          Text('Camera')
+                          Text('Camera'),
                         ],
                       ),
                     ),
@@ -62,8 +61,13 @@ class ImagePickerHelper {
   }
 
   // Pick image from gallery
-  static Future _pickImageFromGallery(BuildContext context, Function(File) onImagePicked) async {
-    final returnImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+  static Future _pickImageFromGallery(
+    BuildContext context,
+    Function(File) onImagePicked,
+  ) async {
+    final returnImage = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
     if (returnImage == null) return;
     File selectedImage = File(returnImage.path);
     onImagePicked(selectedImage);
@@ -71,8 +75,13 @@ class ImagePickerHelper {
   }
 
   // Pick image from camera
-  static Future _pickImageFromCamera(BuildContext context, Function(File) onImagePicked) async {
-    final returnImage = await ImagePicker().pickImage(source: ImageSource.camera);
+  static Future _pickImageFromCamera(
+    BuildContext context,
+    Function(File) onImagePicked,
+  ) async {
+    final returnImage = await ImagePicker().pickImage(
+      source: ImageSource.camera,
+    );
     if (returnImage == null) return;
     File selectedImage = File(returnImage.path);
     onImagePicked(selectedImage);
