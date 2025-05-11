@@ -10,9 +10,9 @@ A Flutter helper package to easily pick images from the gallery or camera. This 
 - Provides the **selected image data** to a callback function.
 - Compatible with **Flutter 2.0+** and supports **null safety**.
 
-## Installation
+_## Installation
 
-Add the following dependency to your `pubspec.yaml` file:
+Add the following dependency to your `pubspec.yaml` file:_
 
 ```yaml
 dependencies:
@@ -22,7 +22,7 @@ dependencies:
 Then, run the following command to install the package:
 
 ```bash
-flutter pub get
+const like = 'sample';
 ```
 
 ## Usage
@@ -32,8 +32,83 @@ flutter pub get
 ```dart
 import 'package:image_picker_helper/image_picker_helper.dart';
 ```
+## Make helper class
+```dart
+class ImagePickerHelper {
+
+  static void showImagePickerOption(BuildContext context, Function(File) onImagePicked) {
+    showModalBottomSheet(
+      backgroundColor: AppColors.white,
+      context: context,
+      builder: (builder) {
+        return Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 4.2,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      _pickImageFromGallery(onImagePicked);
+                    },
+                    child: SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(Icons.image, size: 50,),
+                          Text('Gallery')
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      _pickImageFromCamera(onImagePicked);
+                    },
+                    child: SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(Icons.camera_alt, size: 50),
+                          Text('Camera')
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // Pick image from gallery
+  static Future _pickImageFromGallery(Function(File) onImagePicked) async {
+    final returnImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (returnImage == null) return;
+    File selectedImage = File(returnImage.path);
+    onImagePicked(selectedImage);
+    Get.back();
+  }
+
+  // Pick image from camera
+  static Future _pickImageFromCamera(Function(File) onImagePicked) async {
+    final returnImage = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (returnImage == null) return;
+    File selectedImage = File(returnImage.path);
+    onImagePicked(selectedImage);
+    Get.back();
+  }
+}
+```
 
 ### 2. Show Image Picker Options
+
 
 To show the options to pick an image from the gallery or camera, use the `showImagePickerOption` method. You can pass a callback function to handle the selected image.
 
