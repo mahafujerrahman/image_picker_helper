@@ -3,6 +3,11 @@
 
 A Flutter helper package to easily pick images from the gallery or camera. This package provides a user-friendly interface with a bottom sheet for selecting the image source (camera or gallery) and passes the selected image data to your callback function.
 
+[![Pub Version](https://img.shields.io/pub/v/camera_gallery_photopicker.svg)](https://pub.dev/packages/camera_gallery_photopicker)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Treat-yellow?style=for-the-badge&logo=buymeacoffee&logoColor=white)](https://buymeacoffee.com/mahafujer1w)
+
+
 ## Features
 
 - **Pick images from the gallery or camera**.
